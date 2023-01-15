@@ -1,0 +1,11 @@
+header {
+  background-color: #282c34;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 4rem;
+}
+
+section {
+  color: #282c34;
+  padding: 4rem;
+}
