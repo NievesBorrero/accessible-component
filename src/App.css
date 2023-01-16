@@ -9,3 +9,7 @@ section {
   color: #282c34;
   padding: 4rem;
 }
+
+:focus {
+  outline: 4px solid #FF0000;
+}

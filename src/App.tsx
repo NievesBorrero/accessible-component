@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
+import { Modal } from "./components/modal/accessible-modal/Modal";
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClick = () => {
+    setShowModal(true);
+  };
+
+  const CloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <div className="App">
       <header>Accesibilidad web: Buscando el componente 360</header>
@@ -38,7 +49,14 @@ function App() {
           </li>
         </ul>
         <p>Aquí tenemos un ejemplo de modal accesible:</p>
-        <button>Abrir modal</button>
+        <button
+          onClick={handleClick}
+          onFocus={() => console.log("focus")}
+          onBlur={() => console.log("blur")}
+        >
+          Abrir modal
+        </button>
+        {showModal && <Modal close={CloseModal}></Modal>}
       </section>
     </div>
   );
