@@ -59,24 +59,9 @@ function App() {
         {showModal && (
           <ConfirmationModal
             title="Modal 360"
-            description="Lorem fistrum a wan fistro no te digo trigo por no llamarte Rodrigor
-          te voy a borrar el cerito pupita torpedo. A wan sexuarl pupita te voy
-          a borrar el cerito fistro amatomaa hasta luego Lucas ese que llega a
-          peich. Amatomaa no te digo trigo por no llamarte Rodrigor torpedo
-          diodenoo papaar papaar. Te voy a borrar el cerito no puedor diodeno te
-          voy a borrar el cerito quietooor va usté muy cargadoo ese que llega. A
-          gramenawer te voy a borrar el cerito llevame al sircoo te va a hasé
-          pupitaa. La caidita a gramenawer quietooor me cago en tus muelas a
-          gramenawer qué dise usteer ahorarr pecador quietooor está la cosa muy
-          malar. 
-          Caballo blanco caballo negroorl fistro está la cosa muy malar me cago
-          en tus muelas tiene musho peligro me cago en tus muelas de la pradera.
-          La caidita sexuarl ahorarr me cago en tus muelas llevame al sircoo. Te
-          va a hasé pupitaa a gramenawer me cago en tus muelas a peich ese
-          pedazo de llevame al sircoo. No te digo trigo por no llamarte Rodrigor
-          al ataquerl hasta luego Lucas te voy a borrar el cerito tiene musho
-          peligro torpedo pupita a gramenawer. Quietooor a peich hasta luego
-          Lucas va usté muy cargadoo a wan."
+            description=" Si aceptas, esta noche no podrás conciliar el sueño...no sé yo amigo/a, 
+            yo que tu lo consultaría con la almohada... no creo que esté de acuerdo... 
+            ¿Estás seguro/a de que deseas realizar esta acción?"
             onClose={CloseModal}
             onAccept={() => {}}
           />

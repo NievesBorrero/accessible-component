@@ -1,14 +1,5 @@
 import styled from "styled-components";
 
-export const ModalContainer = styled.div({
-  display: "flex",
-  flexDirection: "column",
-  backgroundColor: "rgb(255,255,255)",
-  height: "auto",
-  width: "640px",
-  padding: "1rem",
-});
-
 export const Overlay = styled.div({
   display: "flex",
   justifyContent: "center",
@@ -20,6 +11,15 @@ export const Overlay = styled.div({
   width: "100vw",
   height: "100%",
   backgroundColor: "rgba(0, 0, 0, 0.5)",
+});
+
+export const ModalContainer = styled.div({
+  display: "flex",
+  flexDirection: "column",
+  backgroundColor: "rgb(255,255,255)",
+  height: "300px",
+  width: "500px",
+  padding: "1rem",
 });
 
 export const IconWrapper = styled.div({
@@ -44,4 +44,8 @@ export const Footer = styled.div({
 
 export const Content = styled.div({
   padding: "0 1.75rem",
+  flexGrow: 1,
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
 });

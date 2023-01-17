@@ -61,7 +61,13 @@ export const ConfirmationModal = ({
 
   return createPortal(
     <Overlay>
-      <ModalContainer ref={ref}>
+      <ModalContainer
+        ref={ref}
+        role="dialog"
+        aria-modal
+        aria-labelledby={title}
+        // Since the modal's static text (description) describes the modal's function, it is not necessary to add the aria-describedBy
+      >
         <IconWrapper onClick={close}>
           <IoMdClose />
         </IconWrapper>
