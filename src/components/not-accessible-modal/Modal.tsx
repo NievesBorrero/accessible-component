@@ -1,9 +1,8 @@
 import React, { useRef } from "react";
-import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import { useEffect } from "react";
 
 import { IoMdClose } from "react-icons/io";
-import { Overlay } from "../components/Overlay/Overlay";
+import { Overlay } from "./Overlay/Overlay";
 
 import {
   ModalContainer,
@@ -20,19 +19,7 @@ interface ModalProps {
 }
 
 export const Modal = ({ close }: ModalProps) => {
-  const [activeElement, setActiveElement] = useState(document.activeElement);
   const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setActiveElement(document.activeElement);
-
-    return () => {
-      if (activeElement instanceof HTMLElement) {
-        activeElement.focus();
-      }
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     const listener = (event: ClickEvent) => {
@@ -46,7 +33,7 @@ export const Modal = ({ close }: ModalProps) => {
     document.addEventListener("mousedown", listener);
   });
 
-  return createPortal(
+  return (
     <Overlay>
       <ModalContainer ref={ref}>
         <IconWrapper>
@@ -84,7 +71,6 @@ export const Modal = ({ close }: ModalProps) => {
           <button>Cancelar</button>
         </Footer>
       </ModalContainer>
-    </Overlay>,
-    document.body
+    </Overlay>
   );
 };
