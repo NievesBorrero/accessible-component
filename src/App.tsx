@@ -49,13 +49,7 @@ function App() {
           </li>
         </ul>
         <p>Aquí tenemos un ejemplo de modal accesible:</p>
-        <button
-          onClick={handleClick}
-          onFocus={() => console.log("focus")}
-          onBlur={() => console.log("blur")}
-        >
-          Abrir modal
-        </button>
+        <button onClick={handleClick}>Abrir modal</button>
         {showModal && (
           <ConfirmationModal
             title="Modal 360"

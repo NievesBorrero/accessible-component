@@ -9,6 +9,7 @@ import {
   Content,
   Footer,
   IconWrapper,
+  SectionsWrapper,
 } from "./ConfirmationModal.styled";
 
 type ClickEvent =
@@ -31,9 +32,11 @@ export const ConfirmationModal = ({
 }: ConfirmationModalProps) => {
   const [activeElement, setActiveElement] = useState(document.activeElement);
   const ref = useRef<HTMLDivElement>(null);
+  const acceptButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setActiveElement(document.activeElement);
+    acceptButtonRef.current?.focus();
   }, []);
 
   const close = (event: ClickEvent) => {
@@ -65,20 +68,43 @@ export const ConfirmationModal = ({
         ref={ref}
         role="dialog"
         aria-modal
-        aria-labelledby={title}
-        // Since the modal's static text (description) describes the modal's function, it is not necessary to add the aria-describedBy
+        // TODO 
+        aria-label="title"
+        aria-labelledby="title"
+        aria-describedby="desc"
+        // TODO
+        tabIndex={-1}
       >
-        <IconWrapper onClick={close}>
-          <IoMdClose />
+        <SectionsWrapper>
+          <Header>
+            <h1 id="title">{title}</h1>
+          </Header>
+          <Content>
+            <p id="desc">{description}</p>
+          </Content>
+          <Footer>
+            <button
+              onClick={onAccept}
+              ref={acceptButtonRef}
+              aria-label="aceptar"
+            >
+              Aceptar
+            </button>
+            <button onClick={close} aria-label="Cancelar">
+              Cancelar
+            </button>
+          </Footer>
+        </SectionsWrapper>
+        <IconWrapper>
+          <div
+            role="button"
+            onClick={close}
+            aria-label="cerrar modal"
+            tabIndex={0}
+          >
+            <IoMdClose aria-hidden="true" />
+          </div>
         </IconWrapper>
-        <Header>
-          <h1>{title}</h1>
-        </Header>
-        <Content>{description}</Content>
-        <Footer>
-          <button onClick={onAccept}>Aceptar</button>
-          <button onClick={close}>Cancelar</button>
-        </Footer>
       </ModalContainer>
     </Overlay>,
     document.body

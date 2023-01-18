@@ -15,11 +15,18 @@ export const Overlay = styled.div({
 
 export const ModalContainer = styled.div({
   display: "flex",
-  flexDirection: "column",
+  flexDirection: "column-reverse",
   backgroundColor: "rgb(255,255,255)",
   height: "300px",
   width: "500px",
   padding: "1rem",
+});
+
+export const SectionsWrapper = styled.div({
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  height: "100%",
 });
 
 export const IconWrapper = styled.div({
