@@ -1,8 +1,8 @@
-import React from "react";
 import { IoMdClose } from "react-icons/io";
 import {
   Overlay,
   ModalContainer,
+  SectionsWrapper,
   IconWrapper,
   Header,
   Content,
@@ -25,17 +25,23 @@ export const ConfirmationModal = ({
   return (
     <Overlay>
       <ModalContainer>
-        <IconWrapper onClick={onClose}>
-          <IoMdClose />
+        <SectionsWrapper>
+          <Header>
+            <h1>{title}</h1>
+          </Header>
+          <Content>
+            <p>{description}</p>
+          </Content>
+          <Footer>
+            <button onClick={onClose}>Cancelar</button>
+            <button onClick={onAccept}>Aceptar</button>
+          </Footer>
+        </SectionsWrapper>
+        <IconWrapper>
+          <div onClick={onClose}>
+            <IoMdClose />
+          </div>
         </IconWrapper>
-        <Header>
-          <h1>{title}</h1>
-        </Header>
-        <Content>{description}</Content>
-        <Footer>
-          <button onClick={onAccept}>Aceptar</button>
-          <button onClick={onClose}>Cancelar</button>
-        </Footer>
       </ModalContainer>
     </Overlay>
   );

@@ -68,17 +68,17 @@ export const ConfirmationModal = ({
 
     if (
       !event.shiftKey &&
-      firstElement instanceof HTMLElement &&
-      document.activeElement === lastElement
+      document.activeElement === lastElement &&
+      firstElement instanceof HTMLElement
     ) {
       firstElement.focus();
-      return event.preventDefault();
+      event.preventDefault();
     }
 
     if (
       event.shiftKey &&
-      lastElement instanceof HTMLElement &&
-      document.activeElement === firstElement
+      document.activeElement === firstElement &&
+      lastElement instanceof HTMLElement
     ) {
       lastElement.focus();
       event.preventDefault();

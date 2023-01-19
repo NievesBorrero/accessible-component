@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { ConfirmationModal } from "./components/accessible-modal/ConfirmationModal";
+import { ConfirmationModal } from "./components/not-accessible-modal/ConfirmationModal";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -17,6 +17,18 @@ function App() {
     <div className="App">
       <header>Accesibilidad web: Buscando el componente 360</header>
       <section>
+        <p>Aquí tenemos un ejemplo de modal NO accesible:</p>
+        <button onClick={handleClick}>Abrir modal</button>
+        {showModal && (
+          <ConfirmationModal
+            title="Modal 360"
+            description=" Si aceptas, esta noche no podrás conciliar el sueño...no sé yo amigo/a, 
+            yo que tu lo consultaría con la almohada... no creo que esté de acuerdo... 
+            ¿Estás seguro/a de que deseas realizar esta acción?"
+            onClose={CloseModal}
+            onAccept={() => {}}
+          />
+        )}
         <p>
           La accesibilidad web es la práctica inclusiva de garantizar la
           accesibilidad a los sitios web, y que las herramientas y las
@@ -48,18 +60,6 @@ function App() {
             <a href="#">cognitivas</a>
           </li>
         </ul>
-        <p>Aquí tenemos un ejemplo de modal accesible:</p>
-        <button onClick={handleClick}>Abrir modal</button>
-        {showModal && (
-          <ConfirmationModal
-            title="Modal 360"
-            description=" Si aceptas, esta noche no podrás conciliar el sueño...no sé yo amigo/a, 
-            yo que tu lo consultaría con la almohada... no creo que esté de acuerdo... 
-            ¿Estás seguro/a de que deseas realizar esta acción?"
-            onClose={CloseModal}
-            onAccept={() => {}}
-          />
-        )}
       </section>
     </div>
   );
