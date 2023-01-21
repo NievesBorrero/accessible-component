@@ -99,10 +99,10 @@ export const ConfirmationModal = ({
   );
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [handleKeyDown]);
 
@@ -117,6 +117,11 @@ export const ConfirmationModal = ({
 
     document.addEventListener("mousedown", listener);
     document.addEventListener("touchstart", listener);
+
+    return () => {
+      document.removeEventListener("mousedown", listener);
+      document.removeEventListener("touchstart", listener);
+    };
   });
 
   return createPortal(
@@ -136,12 +141,10 @@ export const ConfirmationModal = ({
             <p id="desc">{description}</p>
           </Content>
           <Footer>
-            <button ref={cancelButtonRef} onClick={close} aria-label="Cancelar">
+            <button ref={cancelButtonRef} onClick={close}>
               Cancelar
             </button>
-            <button onClick={onAccept} aria-label="aceptar">
-              Aceptar
-            </button>
+            <button onClick={onAccept}>Aceptar</button>
           </Footer>
         </SectionsWrapper>
         <IconWrapper>
