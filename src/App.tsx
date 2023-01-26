@@ -22,9 +22,7 @@ function App() {
         {showModal && (
           <ConfirmationModal
             title="Modal 360"
-            description=" Si aceptas, esta noche no podrás conciliar el sueño...no sé yo amigo/a, 
-            yo que tu lo consultaría con la almohada... no creo que esté de acuerdo... 
-            ¿Estás seguro/a de que deseas realizar esta acción?"
+            description="Los datos serán actualizados. ¿Estás seguro/a de que deseas realizar esta acción?"
             onClose={CloseModal}
             onAccept={() => {}}
           />
