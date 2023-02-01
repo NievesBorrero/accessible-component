@@ -17,12 +17,15 @@ function App() {
     <div className="App">
       <header>Accesibilidad web: Buscando el componente 360</header>
       <section>
-        <p>Aquí tenemos un ejemplo de modal NO accesible:</p>
+        <p>Aquí tenemos un ejemplo de modal no accesible:</p>
         <button onClick={handleClick}>Abrir modal</button>
         {showModal && (
           <ConfirmationModal
             title="Modal 360"
             description="Los datos serán actualizados. ¿Estás seguro/a de que deseas realizar esta acción?"
+            primaryButtonText="Cancelar"
+            secondaryButtonText="Aceptar"
+            // closeButtonText="Cerrar"
             onClose={CloseModal}
             onAccept={() => {}}
           />

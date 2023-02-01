@@ -10,8 +10,10 @@ import {
 } from "./ConfirmationModal.styled";
 
 interface ConfirmationModalProps {
-  description: string;
   title: string;
+  description: string;
+  primaryButtonText: string;
+  secondaryButtonText: string;
   onClose: () => void;
   onAccept: () => void;
 }
@@ -21,20 +23,18 @@ export const ConfirmationModal = ({
   description,
   onClose,
   onAccept,
+  primaryButtonText,
+  secondaryButtonText,
 }: ConfirmationModalProps) => {
   return (
     <Overlay>
       <ModalContainer>
         <SectionsWrapper>
-          <Header>
-            <h1>{title}</h1>
-          </Header>
-          <Content>
-            <p>{description}</p>
-          </Content>
+          <Header>{title}</Header>
+          <Content>{description}</Content>
           <Footer>
-            <button onClick={onClose}>Cancelar</button>
-            <button onClick={onAccept}>Aceptar</button>
+            <button onClick={onClose}>{primaryButtonText}</button>
+            <button onClick={onAccept}>{secondaryButtonText}</button>
           </Footer>
         </SectionsWrapper>
         <IconWrapper>

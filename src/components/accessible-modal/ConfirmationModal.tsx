@@ -18,8 +18,11 @@ type ClickEvent =
   | TouchEvent;
 
 interface ConfirmationModalProps {
-  description: string;
   title: string;
+  description: string;
+  primaryButtonText: string;
+  secondaryButtonText: string;
+  closeButtonText: string;
   onClose: () => void;
   onAccept: () => void;
 }
@@ -27,20 +30,23 @@ interface ConfirmationModalProps {
 export const ConfirmationModal = ({
   title,
   description,
+  primaryButtonText,
+  secondaryButtonText,
   onClose,
   onAccept,
+  closeButtonText,
 }: ConfirmationModalProps) => {
   const activeElement = document.activeElement;
 
   const ref = useRef<HTMLDivElement>(null);
-  const cancelButtonRef = useRef<HTMLButtonElement>(null);
+  const primaryButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    cancelButtonRef.current?.focus();
+    primaryButtonRef.current?.focus();
   }, []);
 
   const close = useCallback(
-    (event: ClickEvent | KeyboardEvent) => {
+    (event: ClickEvent | KeyboardEvent | React.KeyboardEvent) => {
       event.preventDefault();
       event.stopPropagation();
 
@@ -124,6 +130,12 @@ export const ConfirmationModal = ({
     };
   });
 
+  const handleCloseKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter") {
+      close(event);
+    }
+  };
+
   return createPortal(
     <Overlay>
       <ModalContainer
@@ -141,14 +153,20 @@ export const ConfirmationModal = ({
             <p id="desc">{description}</p>
           </Content>
           <Footer>
-            <button ref={cancelButtonRef} onClick={close}>
-              Cancelar
+            <button ref={primaryButtonRef} onClick={close}>
+              {primaryButtonText}
             </button>
-            <button onClick={onAccept}>Aceptar</button>
+            <button onClick={onAccept}>{secondaryButtonText}</button>
           </Footer>
         </SectionsWrapper>
         <IconWrapper>
-          <div role="button" onClick={close} aria-label="cerrar" tabIndex={0}>
+          <div
+            role="button"
+            onClick={close}
+            aria-label={closeButtonText}
+            tabIndex={0}
+            onKeyDown={handleCloseKeyDown}
+          >
             <IoMdClose aria-hidden="true" />
           </div>
         </IconWrapper>
