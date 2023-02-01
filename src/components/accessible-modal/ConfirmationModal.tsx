@@ -42,6 +42,7 @@ export const ConfirmationModal = ({
   const primaryButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
+    // THREE: initial focus
     primaryButtonRef.current?.focus();
   }, []);
 
@@ -51,6 +52,7 @@ export const ConfirmationModal = ({
       event.stopPropagation();
 
       if (activeElement instanceof HTMLElement) {
+        // FIVE: final focus
         activeElement.focus();
       }
 
@@ -93,11 +95,13 @@ export const ConfirmationModal = ({
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
+      // FOUR: Escape -> close
       if (event.key === "Escape") {
         close(event);
       }
 
       if (event.key === "Tab") {
+        // ONE: trap focus
         trapFocus(event);
       }
     },
@@ -117,7 +121,7 @@ export const ConfirmationModal = ({
       if (!ref.current || ref.current.contains(event.target as Node)) {
         return;
       }
-
+      // TWO: click outside -> close
       close(event);
     };
 
@@ -140,10 +144,10 @@ export const ConfirmationModal = ({
     <Overlay>
       <ModalContainer
         ref={ref}
-        role="dialog"
-        aria-modal
-        aria-labelledby="title"
-        aria-describedby="desc"
+        // role="dialog"
+        // aria-modal
+        // aria-labelledby="title"
+        // aria-describedby="desc"
       >
         <SectionsWrapper>
           <Header>
@@ -161,10 +165,10 @@ export const ConfirmationModal = ({
         </SectionsWrapper>
         <IconWrapper>
           <div
-            role="button"
+            // role="button"
+            // tabIndex={0}
+            // aria-label={closeButtonText}
             onClick={close}
-            aria-label={closeButtonText}
-            tabIndex={0}
             onKeyDown={handleCloseKeyDown}
           >
             <IoMdClose aria-hidden="true" />
